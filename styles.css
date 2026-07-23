@@ -367,7 +367,6 @@ button {
 
 .chapter-heading h2,
 .timeline-intro h2,
-.balin-story h2,
 .archive-heading h2,
 .today-content h2,
 .sources-heading h2 {
@@ -580,129 +579,6 @@ button {
   color: rgba(255, 253, 248, 0.65);
   font-size: 14px;
   line-height: 1.75;
-}
-
-.balin-section {
-  padding: clamp(110px, 14vw, 200px) 0;
-  color: var(--cream);
-  background: #24362b;
-}
-
-.balin-grid {
-  display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: clamp(50px, 8vw, 120px);
-  align-items: center;
-}
-
-.balin-image {
-  position: relative;
-  margin: 0;
-}
-
-.balin-image::before {
-  position: absolute;
-  top: -18px;
-  right: 18px;
-  bottom: 18px;
-  left: -18px;
-  border: 1px solid rgba(207, 185, 130, 0.46);
-  content: "";
-}
-
-.balin-image img {
-  position: relative;
-  width: 100%;
-  min-height: 620px;
-  filter: sepia(0.12) contrast(1.06);
-  object-fit: cover;
-}
-
-.balin-image figcaption {
-  position: relative;
-  margin-top: 16px;
-  color: rgba(247, 242, 233, 0.52);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.balin-story h2 {
-  margin: 22px 0 34px;
-}
-
-.balin-story > p {
-  color: rgba(247, 242, 233, 0.72);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.balin-story .story-lead {
-  color: var(--cream);
-  font-family: var(--serif);
-  font-size: clamp(22px, 2.2vw, 29px);
-  line-height: 1.42;
-}
-
-.balin-facts {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 43px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.balin-facts div {
-  padding: 25px 22px 26px 0;
-}
-
-.balin-facts div + div {
-  padding-left: 30px;
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.balin-facts dt {
-  margin-bottom: 10px;
-  color: #d1b879;
-  font-family: var(--serif);
-  font-size: 39px;
-  line-height: 1;
-}
-
-.balin-facts dd {
-  margin: 0;
-  color: rgba(247, 242, 233, 0.53);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  line-height: 1.6;
-  text-transform: uppercase;
-}
-
-.source-note {
-  display: grid;
-  grid-template-columns: 27px 1fr;
-  gap: 16px;
-  margin-top: 38px;
-  padding: 19px 0 0;
-}
-
-.source-note-mark {
-  display: grid;
-  width: 25px;
-  height: 25px;
-  border: 1px solid rgba(207, 185, 130, 0.66);
-  border-radius: 50%;
-  color: #d1b879;
-  font-family: var(--serif);
-  place-items: center;
-}
-
-.source-note p {
-  margin: 0;
-  color: rgba(247, 242, 233, 0.48);
-  font-size: 11px;
-  line-height: 1.7;
 }
 
 .archive-section {
@@ -1157,8 +1033,8 @@ button {
   position: absolute;
   z-index: 5;
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 50%;
@@ -1248,7 +1124,8 @@ button {
 
   .site-header {
     height: 76px;
-    padding-inline: 20px;
+    padding-right: max(20px, env(safe-area-inset-right));
+    padding-left: max(20px, env(safe-area-inset-left));
   }
 
   .site-header.is-scrolled {
@@ -1276,8 +1153,16 @@ button {
     flex-direction: column;
     justify-content: center;
     gap: 25px;
+    min-height: 100dvh;
+    padding:
+      calc(76px + env(safe-area-inset-top))
+      max(20px, env(safe-area-inset-right))
+      calc(24px + env(safe-area-inset-bottom))
+      max(20px, env(safe-area-inset-left));
+    overflow-y: auto;
     color: var(--cream);
     background: var(--forest);
+    overscroll-behavior: contain;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-15px);
@@ -1287,6 +1172,9 @@ button {
   }
 
   .main-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     font-family: var(--serif);
     font-size: 38px;
     font-weight: 400;
@@ -1298,6 +1186,10 @@ button {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  body.nav-open {
+    overflow: hidden;
   }
 
   .nav-open .site-header,
@@ -1352,18 +1244,6 @@ button {
 
   .timeline-intro > p:last-child {
     max-width: 670px;
-  }
-
-  .balin-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .balin-image {
-    width: calc(100% - 18px);
-  }
-
-  .balin-image img {
-    min-height: 480px;
   }
 
   .archive-heading {
@@ -1423,7 +1303,7 @@ button {
 
   .hero-foot {
     right: 15px;
-    bottom: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom));
     left: 15px;
   }
 
@@ -1437,7 +1317,6 @@ button {
 
   .prologue,
   .timeline-section,
-  .balin-section,
   .archive-section,
   .sources-section {
     padding-block: 95px;
@@ -1449,7 +1328,6 @@ button {
 
   .chapter-heading h2,
   .timeline-intro h2,
-  .balin-story h2,
   .archive-heading h2,
   .today-content h2,
   .sources-heading h2 {
@@ -1466,7 +1344,8 @@ button {
   }
 
   .place-facts div {
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 16px;
   }
 
   .place-facts dt {
@@ -1506,27 +1385,21 @@ button {
     padding-bottom: 35px;
   }
 
-  .balin-image img {
-    min-height: 380px;
-  }
-
-  .balin-facts {
-    grid-template-columns: 1fr;
-  }
-
-  .balin-facts div + div {
-    padding-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    border-left: 0;
-  }
-
   .archive-toolbar {
     gap: 3px;
     overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .archive-toolbar::-webkit-scrollbar {
+    display: none;
   }
 
   .filter-button {
     flex: 0 0 auto;
+    min-height: 44px;
     padding-inline: 13px;
   }
 
@@ -1546,6 +1419,16 @@ button {
 
   .archive-card:nth-child(3n + 1) {
     min-height: 360px;
+  }
+
+  .archive-card-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .archive-card-meta small {
+    text-align: left;
   }
 
   .today-section {
@@ -1569,8 +1452,8 @@ button {
   }
 
   .sources-list li {
-    grid-template-columns: 37px 1fr auto;
-    gap: 13px;
+    grid-template-columns: 30px minmax(0, 1fr) 44px;
+    gap: 10px;
     min-height: 130px;
   }
 
@@ -1579,12 +1462,13 @@ button {
   }
 
   .sources-list p {
-    font-size: 10px;
+    font-size: 11px;
+    line-height: 1.55;
   }
 
   .sources-list a {
-    width: 37px;
-    height: 37px;
+    width: 44px;
+    height: 44px;
   }
 
   .sources-list em {
