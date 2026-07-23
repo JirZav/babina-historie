@@ -15,6 +15,9 @@ await mkdir(hostingDir, { recursive: true });
 await Promise.all([
   cp(resolve(root, "assets"), resolve(client, "assets"), { recursive: true }),
   cp(resolve(root, "index.html"), resolve(client, "index.html")),
+  cp(resolve(root, "archiv.html"), resolve(client, "archiv.html")),
+  cp(resolve(root, "archive-data.js"), resolve(client, "archive-data.js")),
+  cp(resolve(root, "archive.js"), resolve(client, "archive.js")),
   cp(resolve(root, "styles.css"), resolve(client, "styles.css")),
   cp(resolve(root, "script.js"), resolve(client, "script.js")),
   cp(resolve(root, ".openai", "hosting.json"), resolve(hostingDir, "hosting.json")),

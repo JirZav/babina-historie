@@ -75,6 +75,7 @@ if ("IntersectionObserver" in window && !prefersReducedMotion) {
 
 const filterButtons = [...document.querySelectorAll(".filter-button")];
 const archiveCards = [...document.querySelectorAll(".archive-card")];
+const visibleCount = document.querySelector("[data-visible-count]");
 let activeFilter = "all";
 
 filterButtons.forEach((button) => {
@@ -91,6 +92,8 @@ filterButtons.forEach((button) => {
       const shouldShow = activeFilter === "all" || card.dataset.category === activeFilter;
       card.classList.toggle("is-hidden", !shouldShow);
     });
+
+    if (visibleCount) visibleCount.textContent = String(visibleCards().length);
   });
 });
 

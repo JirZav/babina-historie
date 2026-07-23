@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kompletní obrazový archiv obce Babina: 62 dochovaných historických fotografií v tematických souborech."
+    />
+    <meta name="theme-color" content="#17271f" />
+    <meta property="og:title" content="Babina — kompletní obrazový archiv" />
+    <meta
+      property="og:description"
+      content="Všech 62 dochovaných historických fotografií obce Babina na jednom místě."
+    />
+    <meta property="og:image" content="assets/images/village-panorama.jpg" />
+    <meta property="og:type" content="website" />
+    <title>Kompletní archiv — Babina</title>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="assets/favicon-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="archive-data.js" defer></script>
+    <script src="archive.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body class="archive-page">
+    <a class="skip-link" href="#main">Přejít k obsahu</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="wordmark" href="index.html" aria-label="Babina — návrat na hlavní stránku">
+        <span class="wordmark-mark">B</span>
+        <span class="wordmark-text">Babina</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Otevřít menu"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Hlavní navigace">
+        <a href="index.html#pribeh">Příběh</a>
+        <a href="index.html#cas">Časová osa</a>
+        <a href="index.html#galerie">Výběr fotografií</a>
+        <a href="index.html#prameny">Prameny</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero archive-hero" id="top" aria-labelledby="archive-page-title">
+        <img
+          class="hero-image"
+          src="assets/images/village-panorama.jpg"
+          alt="Historický panoramatický pohled na Babinu"
+          fetchpriority="high"
+        />
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="hero-kicker">Babina · 62 historických fotografií</p>
+          <h1 id="archive-page-title">Archiv</h1>
+          <p class="hero-lead">Kompletní dochovaný fotografický soubor.</p>
+        </div>
+        <div class="hero-foot">
+          <p>Čtyři tematické skupiny</p>
+          <a href="#fotografie" class="scroll-cue">
+            <span>Prohlížet</span>
+            <span class="scroll-line" aria-hidden="true"></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="archive-library" id="fotografie" aria-labelledby="complete-archive-title">
+        <div class="section-shell">
+          <div class="archive-library-heading reveal">
+            <div>
+              <p class="eyebrow">Kompletní soubor</p>
+              <h2 id="complete-archive-title">Všechny dochované snímky</h2>
+            </div>
+            <p>
+              Zobrazeno <strong data-visible-count>62</strong> fotografií. Snímky
+              jsou rozděleny podle původních zdrojových složek.
+            </p>
+          </div>
+
+          <div class="archive-toolbar reveal" role="group" aria-label="Filtrovat kompletní archiv">
+            <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">
+              Všechny
+            </button>
+            <button type="button" class="filter-button" data-filter="soubor" aria-pressed="false">
+              Obecní archiv
+            </button>
+            <button type="button" class="filter-button" data-filter="tradice" aria-pressed="false">
+              Tradice
+            </button>
+            <button type="button" class="filter-button" data-filter="prace" aria-pressed="false">
+              Zemědělství
+            </button>
+            <button type="button" class="filter-button" data-filter="valka" aria-pressed="false">
+              1. světová válka
+            </button>
+          </div>
+
+          <div class="archive-grid complete-archive-grid" data-complete-archive></div>
+
+          <noscript>
+            <p class="archive-noscript">
+              Pro zobrazení fotografického archivu je potřeba povolit JavaScript.
+            </p>
+          </noscript>
+
+          <div class="archive-provenance reveal">
+            <p>
+              Fotografie nejsou ve všech případech datované ani opatřené původním
+              popisem. Označení proto vychází pouze z názvu zdrojové složky a
+              technického čísla souboru; nedoplňuje neověřené osoby, místa ani
+              události.
+            </p>
+            <a href="index.html#galerie">Zpět na hlavní výběr <span>←</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-word">Babina</div>
+      <div class="footer-row">
+        <p>Kompletní obrazový archiv · 62 fotografií</p>
+        <a href="#top">Zpět nahoru ↑</a>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" aria-label="Detail historické fotografie">
+      <button class="lightbox-close" type="button" aria-label="Zavřít detail">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Předchozí fotografie">←</button>
+      <figure>
+        <img src="" alt="" />
+        <figcaption>
+          <strong></strong>
+          <span></span>
+        </figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Další fotografie">→</button>
+    </dialog>
+  </body>
+</html>
